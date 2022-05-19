@@ -1,0 +1,40 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        compose_version = '1.0.5'
+        kotlin_version = '1.5.31'
+        hilt_version = '2.38.1'
+        lifecycleVersion = '2.3.0'
+
+        //testing libraries
+        koin_version = '3.2.0'
+        junit_x_ext = '1.1.2'
+        testx_rules = '1.3.0'
+        android_arch_core_testing = '1.1.1'
+        retrofit_mock = '2.3.0'
+        mockk_version = '1.9.3'
+        mockwebserver_version = '4.1.0'
+        espresso_contrib = '3.3.0'
+    }
+
+    dependencies {
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.38.1'
+        classpath 'com.google.gms:google-services:4.3.10'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+    repositories {
+        mavenCentral()
+    }
+}// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+plugins {
+    id 'com.android.application' version '7.1.3' apply false
+    id 'com.android.library' version '7.1.3' apply false
+    id 'org.jetbrains.kotlin.android' version '1.5.21' apply false
+    //id 'com.google.dagger.hilt.android' version '2.38.1' apply false
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,186 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.freenow.app"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+
+        unitTests.includeAndroidResources = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion kotlin_version
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation 'androidx.activity:activity-compose:1.4.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    // Compose dependencies
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-rc01"
+    implementation "androidx.navigation:navigation-compose:2.5.0-beta01"
+    implementation "com.google.accompanist:accompanist-flowlayout:0.17.0"
+/*
+    //Livedata and ViewModel
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"*/
+
+    /* implementation 'androidx.core:core-ktx:1.7.0'
+     implementation 'androidx.appcompat:appcompat:1.4.1'
+     implementation 'com.google.android.material:material:1.6.0'
+     implementation "androidx.compose.ui:ui:$compose_version"
+     implementation "androidx.compose.material:material:$compose_version"
+     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+     testImplementation 'junit:junit:4.13.2'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+
+     // Compose dependencies
+     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+     implementation "androidx.navigation:navigation-compose:2.4.0-alpha08"
+     implementation "com.google.accompanist:accompanist-flowlayout:0.17.0"
+     implementation "androidx.activity:activity-compose:1.4.0"*/
+
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
+
+    // Coroutine Lifecycle Scopes
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
+
+    //Dagger - Hilt
+//    implementation 'com.google.dagger:hilt-android:2.38.1'
+//    kapt 'com.google.dagger:hilt-android-compiler:2.38.1'
+//    kapt "com.google.dagger:hilt-compiler:2.38.1"
+//    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+//    kapt "androidx.hilt:hilt-compiler:1.0.0"
+//    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-alpha03'
+//    implementation "androidx.activity:activity-ktx:1.4.0"
+
+    //Compose UI
+    //implementation "androidx.compose.ui:ui:1.2.0-beta01"
+
+    // Compose dependencies
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+    implementation "androidx.navigation:navigation-compose:2.4.0-alpha08"
+    implementation "com.google.accompanist:accompanist-flowlayout:0.17.0"
+
+    //Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:2.38.1"
+    kapt "com.google.dagger:hilt-android-compiler:2.37"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-alpha03'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Maps
+    implementation 'com.google.maps.android:maps-compose:2.1.1'
+
+    // Make sure to also include the latest version of the Maps SDK for Android
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
+    // Also include Compose version `1.2.0-alpha03` or higher - for example:
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    // KTX for the Maps SDK for Android library
+    implementation 'com.google.maps.android:maps-ktx:3.4.0'
+    //implementation 'com.google.maps.android:maps-v3-ktx:2.2.0'
+
+    // Koin for Android
+    //implementation "org.koin:koin-android:$koin_version"
+
+    //implementation "com.google.android.libraries.maps:maps:3.1.0-beta"
+    //implementation 'com.google.maps.android:maps-v3-ktx:2.2.0'
+    //implementation 'androidx.fragment:fragment:1.3.2'
+    //implementation 'com.android.volley:volley:1.1.1'
+    //implementation group: 'com.google.android.libraries.maps', name: 'maps', version: '3.1.0-beta'
+
+    //Testing
+
+    //debugImplementation "org.koin:koin-test:$koin_version"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+
+
+    androidTestImplementation "androidx.test.ext:junit:$junit_x_ext"
+    androidTestImplementation "androidx.test:rules:$testx_rules"
+    androidTestImplementation "android.arch.core:core-testing:$android_arch_core_testing"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockwebserver_version"
+   // androidTestImplementation "org.koin:koin-test:$koin_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_contrib"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_contrib"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+
+    testImplementation "androidx.test.ext:junit:$junit_x_ext"
+    testImplementation "android.arch.core:core-testing:$android_arch_core_testing"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockwebserver_version"
+    //testImplementation "org.koin:koin-test:$koin_version"
+    testImplementation "io.mockk:mockk:$mockk_version"
+
+    // Koin Core features
+    //implementation "io.insert-koin:koin-core:$koin_version"
+// Koin Test features
+    //testImplementation "io.insert-koin:koin-test:$koin_version"
+
+
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.37'
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.37'
+
+}
